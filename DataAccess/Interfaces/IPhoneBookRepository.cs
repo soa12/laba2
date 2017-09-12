@@ -11,8 +11,9 @@ namespace DataAccess.Interfaces
     {
         IEnumerable<Record> GetRecords(); 
         void Create(Record r);
-        void Read(int id);
+        Record Read(int id);
         void Update(Record r);
         void Delete(int id);
+        void Save();
     }
 }
