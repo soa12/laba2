@@ -14,12 +14,15 @@ namespace DomainModel
 
         [Required]
         [MaxLength(50)]
+        [DisplayName("Имя")]
         public string Name { get; set; }
 
         [MaxLength(50)]
+        [DisplayName("Фамилия")]
         public string LastName { get; set; }
 
         [Required]
+        [DisplayName("Номер телефона")]
         [DataType(DataType.PhoneNumber)]
         [MaxLength(16)]
         public string PhoneNumber { get; set; }
