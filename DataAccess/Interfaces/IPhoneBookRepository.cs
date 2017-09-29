@@ -15,5 +15,9 @@ namespace DataAccess.Interfaces
         void Update(Record r);
         void Delete(int id);
         void Save();
+
+        DateTime Test();
+        IEnumerable<Record> GetRecords(string name);
+        IEnumerable<Record> GetRecords(int day);
     }
 }

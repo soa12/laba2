@@ -20,10 +20,11 @@ namespace WebApplication.Controllers
         // GET: Records
         public ActionResult Index(string searchString)
         {
+
             if (!String.IsNullOrEmpty(searchString))
             {
-                var records = db.GetRecords(searchString);
-                return View(records);
+                
+                return View(db.GetRecords(searchString));
             }
             //return View(db.Records.ToList());
             return View(db.GetRecords());
@@ -128,16 +129,22 @@ namespace WebApplication.Controllers
 
 
         
-        public ActionResult Report(int? day)
-        {                
+        public ActionResult Report(int day)
+        {
+
             //var record = db.GetRecords(day);
-            if (day!=null)
-            {
+            day = 7;
                 return View(db.GetRecords(day));
-            }
-            var record = db.GetRecords("");
-                return View(record);
+        
         }
+
+        public ActionResult Test()
+        {
+            ViewBag.Head = db.Test();
+            //var days = db.Test();
+            return View();
+        }
+
 
         protected override void Dispose(bool disposing)
         {

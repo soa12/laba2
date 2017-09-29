@@ -1,22 +1,14 @@
 ﻿@model IEnumerable<DomainModel.Record>
 
 @{
-    ViewBag.Title = "Телефонная книга";
+    ViewBag.Title = "Ближайщие дни рождения";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Телефонная книга</h2>
+<h2>Ближайщие дни рождения</h2>
 
-<p>
-    @Html.ActionLink("Создать контакт", "Create")
-    
-</p>
-<form asp-controller="Records" asp-action="Index" method="GET">
-    <p>
-        Имя: <input type="text" name="searchString" class="input-group-sm">
-        <input type="submit" value="Поиск"  class="btn btn-default"/>
-    </p>
-    </form>
+
+
     <table class="table">
         <tr>
             <th>
@@ -48,11 +40,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Birthday)
-                </td>
-                <td>
-                    @Html.ActionLink("Изменить", "Edit", new { id = item.Id }) |
-
-                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
                 </td>
             </tr>
         }

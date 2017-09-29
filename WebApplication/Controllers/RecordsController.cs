@@ -18,8 +18,14 @@ namespace WebApplication.Controllers
         private RecordRepository db = new RecordRepository();
 
         // GET: Records
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+
+                return View(db.GetRecords(searchString));
+            }
             //return View(db.Records.ToList());
             return View(db.GetRecords());
         }
@@ -120,6 +126,24 @@ namespace WebApplication.Controllers
             db.Delete(id);
             return RedirectToAction("Index");
         }
+
+        public ActionResult Report(int day=1)
+        {
+
+            //var record = db.GetRecords(day);
+            //day = 7;
+            return View(db.GetRecords(day));
+
+        }
+
+
+        public ActionResult Test()
+        {
+            ViewBag.Head = db.Test();
+            //var days = db.Test();
+            return View();
+        }
+
 
         protected override void Dispose(bool disposing)
         {

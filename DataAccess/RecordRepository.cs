@@ -28,6 +28,7 @@ namespace DataAccess
         public void Update(Record r)
         {
             context.Entry(r).State = EntityState.Modified;
+            context.SaveChanges();
         }
         public void Delete(int id)
         {
@@ -46,8 +47,35 @@ namespace DataAccess
         public IEnumerable<Record> GetRecords()
         {
             return context.Records;
-        }  
+        }
 
+        public IEnumerable<Record> GetRecords(string name)
+        {
+            var record = from r in context.Records
+                         where r.Name.Contains(name)
+                         select r;
+             
+            
+            return record;
+        }
 
+        public IEnumerable<Record> GetRecords(int day)
+        {
+            var day1 = DateTime.Today.AddDays(day).Day;
+            
+            var record = from r in context.Records      
+                         where
+                    (r.Birthday.Month == DateTime.Today.Month && r.Birthday.Day >= DateTime.Today.Day &&
+                    r.Birthday.Day <= day1)
+                         select r;
+                        
+            return record;
+        }
+
+        public DateTime Test()
+        {
+            var dayPlus = DateTime.Today.AddDays(DateTime.Today.AddMonths(1).Day);
+            return dayPlus;
+        }
     }
 }
