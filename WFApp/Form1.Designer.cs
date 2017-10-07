@@ -29,38 +29,101 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.create = new System.Windows.Forms.Button();
+            this.Delete = new System.Windows.Forms.Button();
+            this.Add = new System.Windows.Forms.Button();
+            this.Edit = new System.Windows.Forms.Button();
+            this.Close = new System.Windows.Forms.Button();
+            this.buttonReport = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(62, 96);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(773, 301);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // create
+            // Delete
             // 
-            this.create.Location = new System.Drawing.Point(84, 335);
-            this.create.Name = "create";
-            this.create.Size = new System.Drawing.Size(78, 33);
-            this.create.TabIndex = 1;
-            this.create.Text = "Создать";
-            this.create.UseVisualStyleBackColor = true;
-            this.create.Click += new System.EventHandler(this.create_Click);
+            this.Delete.Location = new System.Drawing.Point(207, 341);
+            this.Delete.Name = "Delete";
+            this.Delete.Size = new System.Drawing.Size(80, 30);
+            this.Delete.TabIndex = 2;
+            this.Delete.Text = "Удалить";
+            this.Delete.UseVisualStyleBackColor = true;
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
+            // 
+            // Add
+            // 
+            this.Add.Location = new System.Drawing.Point(12, 341);
+            this.Add.Name = "Add";
+            this.Add.Size = new System.Drawing.Size(80, 30);
+            this.Add.TabIndex = 3;
+            this.Add.Text = "Добавить";
+            this.Add.UseVisualStyleBackColor = true;
+            this.Add.Click += new System.EventHandler(this.Add_Click);
+            // 
+            // Edit
+            // 
+            this.Edit.Location = new System.Drawing.Point(109, 341);
+            this.Edit.Name = "Edit";
+            this.Edit.Size = new System.Drawing.Size(80, 30);
+            this.Edit.TabIndex = 4;
+            this.Edit.Text = "Изменить";
+            this.Edit.UseVisualStyleBackColor = true;
+            this.Edit.Click += new System.EventHandler(this.Edit_Click);
+            // 
+            // Close
+            // 
+            this.Close.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.Close.Location = new System.Drawing.Point(705, 341);
+            this.Close.Name = "Close";
+            this.Close.Size = new System.Drawing.Size(80, 30);
+            this.Close.TabIndex = 5;
+            this.Close.Text = "Закрыть";
+            this.Close.UseVisualStyleBackColor = true;
+            this.Close.Click += new System.EventHandler(this.Close_Click);
+            // 
+            // buttonReport
+            // 
+            this.buttonReport.Location = new System.Drawing.Point(506, 341);
+            this.buttonReport.Name = "buttonReport";
+            this.buttonReport.Size = new System.Drawing.Size(178, 30);
+            this.buttonReport.TabIndex = 6;
+            this.buttonReport.Text = "Ближайщие дни рождения";
+            this.buttonReport.UseVisualStyleBackColor = true;
+            this.buttonReport.Click += new System.EventHandler(this.buttonReport_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(383, 341);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 400);
-            this.Controls.Add(this.create);
+            this.ClientSize = new System.Drawing.Size(797, 383);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.buttonReport);
+            this.Controls.Add(this.Close);
+            this.Controls.Add(this.Edit);
+            this.Controls.Add(this.Add);
+            this.Controls.Add(this.Delete);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Телефонная книга";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -70,7 +133,13 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button create;
+        private System.Windows.Forms.Button Delete;
+        private System.Windows.Forms.Button Add;
+        private System.Windows.Forms.Button Edit;
+        private System.Windows.Forms.Button Close;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonReport;
+        private System.Windows.Forms.Button button2;
     }
 }
 

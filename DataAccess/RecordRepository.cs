@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -76,6 +77,13 @@ namespace DataAccess
         {
             var dayPlus = DateTime.Today.AddDays(DateTime.Today.AddMonths(1).Day);
             return dayPlus;
+        }
+
+        public BindingList<Record> ToBindingList()
+        {
+            context.Records.Load();
+            return context.Records.Local.ToBindingList();
+            //context.Records.ToListAsync();
         }
     }
 }

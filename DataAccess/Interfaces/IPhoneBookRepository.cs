@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ namespace DataAccess.Interfaces
         void Update(Record r);
         void Delete(int id);
         void Save();
+
+        BindingList<Record> ToBindingList();
 
         DateTime Test();
         IEnumerable<Record> GetRecords(string name);
