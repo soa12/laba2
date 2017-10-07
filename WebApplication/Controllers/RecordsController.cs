@@ -6,8 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DataAccess;
+//using DataAccess;
 using DomainModel;
+using JsonRepository;
 
 namespace WebApplication.Controllers
 {
@@ -17,15 +18,17 @@ namespace WebApplication.Controllers
 
         private RecordRepository db = new RecordRepository();
 
+        //private JsonRepository. db = new RecordRepository();
+
         // GET: Records
-        public ActionResult Index(string searchString)
+        public ActionResult Index()//string searchString)
         {
+            db.Serializable();
+            //if (!String.IsNullOrEmpty(searchString))
+            //{
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-
-                return View(db.GetRecords(searchString));
-            }
+            //    return View(db.GetRecords(searchString));
+            //}
             //return View(db.Records.ToList());
             return View(db.GetRecords());
         }
@@ -33,10 +36,10 @@ namespace WebApplication.Controllers
         // GET: Records/Details/5
         public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
             Record record = db.Read(id);
             if (record == null)
             {
@@ -71,10 +74,10 @@ namespace WebApplication.Controllers
         // GET: Records/Edit/5
         public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
             Record record = db.Read(id);
             if (record == null)
             {
@@ -103,10 +106,10 @@ namespace WebApplication.Controllers
         // GET: Records/Delete/5
         public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
             Record record = db.Read(id);
             if (record == null)
             {
