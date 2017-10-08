@@ -7,9 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DataAccess;
+//using DataAccess;
+using PostgreSQLRepository;
 using DomainModel;
-
+using System.Reflection;
+using DataAccess.Interfaces;
+using System.IO;
 
 namespace WFApp
 {
@@ -17,10 +20,11 @@ namespace WFApp
     {
 
         private RecordRepository db = new RecordRepository();
+
         public Form1()
         {
             InitializeComponent();
-            
+
             dataGridView1.DataSource = db.ToBindingList();
             //dataGridView1.DataSource = db.GetRecords().ToList();
         }
@@ -32,7 +36,7 @@ namespace WFApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         private void Delete_Click(object sender, EventArgs e)
@@ -130,10 +134,11 @@ namespace WFApp
         {
 
         }
+
         private void buttonReport_Click(object sender, EventArgs e)
         {
             int day = 5;
-            
+
             Report reportForm = new Report();
 
             reportForm.dataGridView1.DataSource = db.GetRecords(day).ToList();
@@ -144,19 +149,29 @@ namespace WFApp
             List<Record> list = new List<Record>();
             list = db.GetRecords(day).ToList();
 
-            
+
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int day = 5;
-            Report reportForm = new Report();
-            DialogResult result = reportForm.ShowDialog(this);
+            //openFileDialog1 = new OpenFileDialog(); //создание диалогового окна для выбора файла
+            //openFileDialog1.Filter = "Text files (*.dll)|*.txt|All files(*.*)|*.*"; //формат загружаемого файла
+            //if (openFileDialog1.ShowDialog() == DialogResult.OK) //если в окне была нжата кнопка "ОК"
+            //{
+            //    Encoding enc = Encoding.GetEncoding(1251);
+            //    string path = openFileDialog1.FileName;
+            //    string temp;
+            //    StreamReader sr = new StreamReader(path, enc);
 
-            if (result == DialogResult.Cancel)
-                return;
-            reportForm.dataGridView1.DataSource = db.GetRecords(day).ToList();
+            //    var asm = Assembly.LoadFile(path);
+            //    //Пример поиска типа данных, реализующего интерфейс репозитория:
+            //    var results = from type in asm.GetTypes() where typeof(IPhoneBookRepository).IsAssignableFrom(type) select type;
+            //    //Пример создания объекта найденного типа данных:
+            //    IPhoneBookRepository instance = (IPhoneBookRepository)Activator.CreateInstance(results.FirstOrDefault());
+
+            //}
+            
         }
     }
 }
