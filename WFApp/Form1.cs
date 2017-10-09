@@ -138,9 +138,7 @@ namespace WFApp
         private void buttonReport_Click(object sender, EventArgs e)
         {
             int day = 5;
-
             Report reportForm = new Report();
-
             reportForm.dataGridView1.DataSource = db.GetRecords(day).ToList();
             DialogResult result = reportForm.ShowDialog(this);
 
@@ -148,30 +146,27 @@ namespace WFApp
                 return;
             List<Record> list = new List<Record>();
             list = db.GetRecords(day).ToList();
-
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //openFileDialog1 = new OpenFileDialog(); //создание диалогового окна для выбора файла
-            //openFileDialog1.Filter = "Text files (*.dll)|*.txt|All files(*.*)|*.*"; //формат загружаемого файла
-            //if (openFileDialog1.ShowDialog() == DialogResult.OK) //если в окне была нжата кнопка "ОК"
-            //{
-            //    Encoding enc = Encoding.GetEncoding(1251);
-            //    string path = openFileDialog1.FileName;
-            //    string temp;
-            //    StreamReader sr = new StreamReader(path, enc);
+            openFileDialog1 = new OpenFileDialog(); //создание диалогового окна для выбора файла
+            openFileDialog1.Filter = "Text files (*.dll)|*.txt|All files(*.*)|*.*"; //формат загружаемого файла
+            if (openFileDialog1.ShowDialog() == DialogResult.OK) //если в окне была нжата кнопка "ОК"
+            {
+                Encoding enc = Encoding.GetEncoding(1251);
+                string path = openFileDialog1.FileName;
+                string temp;
+                StreamReader sr = new StreamReader(path, enc);
 
-            //    var asm = Assembly.LoadFile(path);
-            //    //Пример поиска типа данных, реализующего интерфейс репозитория:
-            //    var results = from type in asm.GetTypes() where typeof(IPhoneBookRepository).IsAssignableFrom(type) select type;
-            //    //Пример создания объекта найденного типа данных:
-            //    IPhoneBookRepository instance = (IPhoneBookRepository)Activator.CreateInstance(results.FirstOrDefault());
+                var asm = Assembly.LoadFile(path);
+                //Пример поиска типа данных, реализующего интерфейс репозитория:
+                var results = from type in asm.GetTypes() where typeof(IPhoneBookRepository).IsAssignableFrom(type) select type;
+                //Пример создания объекта найденного типа данных:
+                IPhoneBookRepository instance = (IPhoneBookRepository)Activator.CreateInstance(results.FirstOrDefault());
 
-            //}
-            
+            }
+
         }
     }
 }

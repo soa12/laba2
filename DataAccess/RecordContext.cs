@@ -9,7 +9,7 @@ namespace DataAccess
 {
     class RecordContext : DbContext
     {
-        public RecordContext() : base("PhoneBookConnectionString")
+        public RecordContext() : base("SQLServer")
         {
             
         }
