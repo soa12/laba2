@@ -11,21 +11,30 @@ using System.Windows.Forms;
 using PostgreSQLRepository;
 using DomainModel;
 using System.Reflection;
-using DataAccess.Interfaces;
 using System.IO;
+using DataAccess;
+
 
 namespace WFApp
 {
     public partial class Form1 : Form
     {
-
-        private RecordRepository db = new RecordRepository();
+        private IPhoneBookRepository db;
+        //private RecordRepository db = new RecordRepository();
 
         public Form1()
         {
             InitializeComponent();
-
-            dataGridView1.DataSource = db.ToBindingList();
+            MessageBox.Show("Выберите репозиторий");
+            openFileDialog1 = new OpenFileDialog(); //создание диалогового окна для выбора файла
+            openFileDialog1.Filter = "Dynamic Link Library (*.dll)|*.txt|All files(*.*)|*.*"; //формат загружаемого файла
+            if (openFileDialog1.ShowDialog() == DialogResult.OK) //если в окне была нжата кнопка "ОК"
+            {
+                string path = openFileDialog1.FileName;
+                db = ModuleLoader.ReturnObject(path);
+                dataGridView1.DataSource = db.ToBindingList();
+            }
+            
             //dataGridView1.DataSource = db.GetRecords().ToList();
         }
 
@@ -36,7 +45,7 @@ namespace WFApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void Delete_Click(object sender, EventArgs e)
@@ -95,19 +104,12 @@ namespace WFApp
                 bool converted = Int32.TryParse(dataGridView1[0, index].Value.ToString(), out id);
                 if (converted == false)
                     return;
-
-                //Player player = db.Players.Find(id);
                 Record record = db.Read(id);
                 ContactForm contactForm = new ContactForm();
-                //PlayerForm plForm = new PlayerForm();
                 contactForm.textBoxName.Text = record.Name;
                 contactForm.textBoxLastName.Text = record.LastName;
                 contactForm.textBoxPhone.Text = record.PhoneNumber;
                 contactForm.dateTimeBirthdate.Value = record.Birthday;
-                //plForm.numericUpDown1.Value = player.Age;
-                //plForm.comboBox1.SelectedItem = player.Position;
-                //plForm.textBox1.Text = player.Name;
-
                 DialogResult result = contactForm.ShowDialog(this);
 
                 if (result == DialogResult.Cancel)
@@ -118,12 +120,6 @@ namespace WFApp
                 record.PhoneNumber = contactForm.textBoxPhone.Text;
                 record.Birthday = contactForm.dateTimeBirthdate.Value.Date;
                 db.Update(record);
-
-                //player.Age = (int)plForm.numericUpDown1.Value;
-                //player.Name = plForm.textBox1.Text;
-                //player.Position = plForm.comboBox1.SelectedItem.ToString();
-
-                //db.SaveChanges();
                 dataGridView1.Refresh(); // обновляем грид
                 MessageBox.Show("Контакт обновлен");
 
@@ -142,28 +138,22 @@ namespace WFApp
             reportForm.dataGridView1.DataSource = db.GetRecords(day).ToList();
             DialogResult result = reportForm.ShowDialog(this);
 
-            if (result == DialogResult.Cancel)
-                return;
-            List<Record> list = new List<Record>();
-            list = db.GetRecords(day).ToList();
+            //if (result == DialogResult.Cancel)
+            //    return;
+            //List<Record> list = new List<Record>();
+            
+            //list = db.GetRecords(day).ToList();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             openFileDialog1 = new OpenFileDialog(); //создание диалогового окна для выбора файла
-            openFileDialog1.Filter = "Text files (*.dll)|*.txt|All files(*.*)|*.*"; //формат загружаемого файла
+            openFileDialog1.Filter = "Dynamic Link Library (*.dll)|*.txt|All files(*.*)|*.*"; //формат загружаемого файла
             if (openFileDialog1.ShowDialog() == DialogResult.OK) //если в окне была нжата кнопка "ОК"
             {
-                Encoding enc = Encoding.GetEncoding(1251);
                 string path = openFileDialog1.FileName;
-                string temp;
-                StreamReader sr = new StreamReader(path, enc);
-
-                var asm = Assembly.LoadFile(path);
-                //Пример поиска типа данных, реализующего интерфейс репозитория:
-                var results = from type in asm.GetTypes() where typeof(IPhoneBookRepository).IsAssignableFrom(type) select type;
-                //Пример создания объекта найденного типа данных:
-                IPhoneBookRepository instance = (IPhoneBookRepository)Activator.CreateInstance(results.FirstOrDefault());
+                db = ModuleLoader.ReturnObject(path);
+                dataGridView1.DataSource = db.ToBindingList();
 
             }
 

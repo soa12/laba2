@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DomainModel;
 using Newtonsoft.Json;
+using System.ComponentModel;
 
 namespace JsonRepository
 {
@@ -79,6 +80,11 @@ namespace JsonRepository
         {
             DateTime d = DateTime.Today;
             return d;
+        }
+
+        public BindingList<Record> ToBindingList()
+        {
+            throw new NotImplementedException();
         }
     }
 }
