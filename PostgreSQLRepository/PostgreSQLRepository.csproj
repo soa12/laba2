@@ -62,8 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecordContext.cs" />
-    <Compile Include="RecordRepository.cs" />
+    <Compile Include="PostgreSQLContext.cs" />
+    <Compile Include="PostgreSQLRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DomainModel\DomainModel.csproj">

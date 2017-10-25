@@ -1,6 +1,6 @@
 ﻿namespace WFApp
 {
-    partial class Form1
+    partial class PhoneBookForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -32,8 +32,8 @@
             this.Delete = new System.Windows.Forms.Button();
             this.Add = new System.Windows.Forms.Button();
             this.Edit = new System.Windows.Forms.Button();
-            this.buttonReport = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Report = new System.Windows.Forms.Button();
+            this.OpenButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -79,42 +79,42 @@
             this.Edit.UseVisualStyleBackColor = true;
             this.Edit.Click += new System.EventHandler(this.Edit_Click);
             // 
-            // buttonReport
+            // Report
             // 
-            this.buttonReport.Location = new System.Drawing.Point(309, 265);
-            this.buttonReport.Name = "buttonReport";
-            this.buttonReport.Size = new System.Drawing.Size(178, 30);
-            this.buttonReport.TabIndex = 6;
-            this.buttonReport.Text = "Ближайщие дни рождения";
-            this.buttonReport.UseVisualStyleBackColor = true;
-            this.buttonReport.Click += new System.EventHandler(this.buttonReport_Click);
+            this.Report.Location = new System.Drawing.Point(309, 265);
+            this.Report.Name = "Report";
+            this.Report.Size = new System.Drawing.Size(178, 30);
+            this.Report.TabIndex = 6;
+            this.Report.Text = "Ближайщие дни рождения";
+            this.Report.UseVisualStyleBackColor = true;
+            this.Report.Click += new System.EventHandler(this.Report_Click);
             // 
-            // button2
+            // OpenButton
             // 
-            this.button2.Location = new System.Drawing.Point(523, 265);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 30);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Открыть";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.OpenButton.Location = new System.Drawing.Point(523, 265);
+            this.OpenButton.Name = "OpenButton";
+            this.OpenButton.Size = new System.Drawing.Size(75, 30);
+            this.OpenButton.TabIndex = 7;
+            this.OpenButton.Text = "Открыть";
+            this.OpenButton.UseVisualStyleBackColor = true;
+            this.OpenButton.Click += new System.EventHandler(this.OpenButton_Click);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // Form1
+            // PhoneBookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(605, 299);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.buttonReport);
+            this.Controls.Add(this.OpenButton);
+            this.Controls.Add(this.Report);
             this.Controls.Add(this.Edit);
             this.Controls.Add(this.Add);
             this.Controls.Add(this.Delete);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "Form1";
+            this.Name = "PhoneBookForm";
             this.Text = "Телефонная книга";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -129,8 +129,8 @@
         private System.Windows.Forms.Button Add;
         private System.Windows.Forms.Button Edit;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button buttonReport;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Report;
+        private System.Windows.Forms.Button OpenButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

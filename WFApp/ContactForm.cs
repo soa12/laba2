@@ -13,7 +13,7 @@ namespace WFApp
 {
     public partial class ContactForm : Form
     {
-        private RecordRepository db = new RecordRepository();
+        //private RecordRepository db = new RecordRepository();
 
         public ContactForm()
         {
@@ -21,6 +21,9 @@ namespace WFApp
 
         }
 
-        
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

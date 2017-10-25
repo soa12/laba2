@@ -10,9 +10,9 @@ using DomainModel;
 
 namespace DataAccess
 {
-    public class RecordRepository : IPhoneBookRepository
+    public class MSSQLRepository : IPhoneBookRepository
     {
-        RecordContext context = new RecordContext();
+        MSSQLContext context = new MSSQLContext();
 
         public void Create(Record r)
         {
@@ -72,11 +72,11 @@ namespace DataAccess
             return record;
         }
 
-        public DateTime Test()
-        {
-            var dayPlus = DateTime.Today.AddDays(DateTime.Today.AddMonths(1).Day);
-            return dayPlus;
-        }
+        //public DateTime Test()
+        //{
+        //    var dayPlus = DateTime.Today.AddDays(DateTime.Today.AddMonths(1).Day);
+        //    return dayPlus;
+        //}
 
         public BindingList<Record> ToBindingList()
         {

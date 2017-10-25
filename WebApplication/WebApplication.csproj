@@ -297,10 +297,6 @@
       <Project>{141bf15f-9183-4d78-b6b5-f3524325d2ad}</Project>
       <Name>DomainModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JsonRepository\JsonRepository.csproj">
-      <Project>{e06a8911-5f9b-4174-920c-d232758804c5}</Project>
-      <Name>JsonRepository</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

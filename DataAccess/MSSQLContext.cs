@@ -7,9 +7,9 @@ using System.Data.Entity;
 using DomainModel;
 namespace DataAccess
 {
-    class RecordContext : DbContext
+    class MSSQLContext : DbContext
     {
-        public RecordContext() : base("SQLServer")
+        public MSSQLContext() : base("SQLServer")
         {
             
         }

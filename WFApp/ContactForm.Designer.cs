@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.OK = new System.Windows.Forms.Button();
-            this.Cancel = new System.Windows.Forms.Button();
-            this.name = new System.Windows.Forms.Label();
-            this.lastName = new System.Windows.Forms.Label();
-            this.phone = new System.Windows.Forms.Label();
-            this.birthdate = new System.Windows.Forms.Label();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.textBoxLastName = new System.Windows.Forms.TextBox();
-            this.textBoxPhone = new System.Windows.Forms.TextBox();
             this.dateTimeBirthdate = new System.Windows.Forms.DateTimePicker();
+            this.textBoxPhone = new System.Windows.Forms.TextBox();
+            this.textBoxLastName = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.birthdate = new System.Windows.Forms.Label();
+            this.phone = new System.Windows.Forms.Label();
+            this.lastName = new System.Windows.Forms.Label();
+            this.name = new System.Windows.Forms.Label();
+            this.Cancel = new System.Windows.Forms.Button();
+            this.OK = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,16 +60,73 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Контакт";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // OK
+            // dateTimeBirthdate
             // 
-            this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OK.Location = new System.Drawing.Point(156, 215);
-            this.OK.Name = "OK";
-            this.OK.Size = new System.Drawing.Size(80, 25);
-            this.OK.TabIndex = 1;
-            this.OK.Text = "ОК";
-            this.OK.UseVisualStyleBackColor = true;
+            this.dateTimeBirthdate.Location = new System.Drawing.Point(163, 175);
+            this.dateTimeBirthdate.MaxDate = new System.DateTime(2017, 10, 8, 3, 56, 56, 0);
+            this.dateTimeBirthdate.Name = "dateTimeBirthdate";
+            this.dateTimeBirthdate.Size = new System.Drawing.Size(159, 20);
+            this.dateTimeBirthdate.TabIndex = 10;
+            this.dateTimeBirthdate.Value = new System.DateTime(2017, 10, 8, 0, 0, 0, 0);
+            // 
+            // textBoxPhone
+            // 
+            this.textBoxPhone.Location = new System.Drawing.Point(163, 126);
+            this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.Size = new System.Drawing.Size(159, 20);
+            this.textBoxPhone.TabIndex = 9;
+            // 
+            // textBoxLastName
+            // 
+            this.textBoxLastName.Location = new System.Drawing.Point(163, 82);
+            this.textBoxLastName.Name = "textBoxLastName";
+            this.textBoxLastName.Size = new System.Drawing.Size(159, 20);
+            this.textBoxLastName.TabIndex = 8;
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(163, 41);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(159, 20);
+            this.textBoxName.TabIndex = 7;
+            // 
+            // birthdate
+            // 
+            this.birthdate.AutoSize = true;
+            this.birthdate.Location = new System.Drawing.Point(45, 175);
+            this.birthdate.Name = "birthdate";
+            this.birthdate.Size = new System.Drawing.Size(86, 13);
+            this.birthdate.TabIndex = 6;
+            this.birthdate.Text = "Дата рождения";
+            // 
+            // phone
+            // 
+            this.phone.AutoSize = true;
+            this.phone.Location = new System.Drawing.Point(38, 134);
+            this.phone.Name = "phone";
+            this.phone.Size = new System.Drawing.Size(93, 13);
+            this.phone.TabIndex = 5;
+            this.phone.Text = "Номер телефона";
+            // 
+            // lastName
+            // 
+            this.lastName.AutoSize = true;
+            this.lastName.Location = new System.Drawing.Point(75, 90);
+            this.lastName.Name = "lastName";
+            this.lastName.Size = new System.Drawing.Size(56, 13);
+            this.lastName.TabIndex = 4;
+            this.lastName.Text = "Фамилия";
+            // 
+            // name
+            // 
+            this.name.AutoSize = true;
+            this.name.Location = new System.Drawing.Point(102, 44);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(29, 13);
+            this.name.TabIndex = 3;
+            this.name.Text = "Имя";
             // 
             // Cancel
             // 
@@ -81,71 +138,15 @@
             this.Cancel.Text = "Отмена";
             this.Cancel.UseVisualStyleBackColor = true;
             // 
-            // name
+            // OK
             // 
-            this.name.AutoSize = true;
-            this.name.Location = new System.Drawing.Point(102, 44);
-            this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(29, 13);
-            this.name.TabIndex = 3;
-            this.name.Text = "Имя";
-            // 
-            // lastName
-            // 
-            this.lastName.AutoSize = true;
-            this.lastName.Location = new System.Drawing.Point(75, 90);
-            this.lastName.Name = "lastName";
-            this.lastName.Size = new System.Drawing.Size(56, 13);
-            this.lastName.TabIndex = 4;
-            this.lastName.Text = "Фамилия";
-            // 
-            // phone
-            // 
-            this.phone.AutoSize = true;
-            this.phone.Location = new System.Drawing.Point(38, 134);
-            this.phone.Name = "phone";
-            this.phone.Size = new System.Drawing.Size(93, 13);
-            this.phone.TabIndex = 5;
-            this.phone.Text = "Номер телефона";
-            // 
-            // birthdate
-            // 
-            this.birthdate.AutoSize = true;
-            this.birthdate.Location = new System.Drawing.Point(45, 175);
-            this.birthdate.Name = "birthdate";
-            this.birthdate.Size = new System.Drawing.Size(86, 13);
-            this.birthdate.TabIndex = 6;
-            this.birthdate.Text = "Дата рождения";
-            // 
-            // textBoxName
-            // 
-            this.textBoxName.Location = new System.Drawing.Point(163, 41);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(159, 20);
-            this.textBoxName.TabIndex = 7;
-            // 
-            // textBoxLastName
-            // 
-            this.textBoxLastName.Location = new System.Drawing.Point(163, 82);
-            this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(159, 20);
-            this.textBoxLastName.TabIndex = 8;
-            // 
-            // textBoxPhone
-            // 
-            this.textBoxPhone.Location = new System.Drawing.Point(163, 126);
-            this.textBoxPhone.Name = "textBoxPhone";
-            this.textBoxPhone.Size = new System.Drawing.Size(159, 20);
-            this.textBoxPhone.TabIndex = 9;
-            // 
-            // dateTimeBirthdate
-            // 
-            this.dateTimeBirthdate.Location = new System.Drawing.Point(163, 175);
-            this.dateTimeBirthdate.MaxDate = new System.DateTime(2017, 10, 8, 3, 56, 56, 0);
-            this.dateTimeBirthdate.Name = "dateTimeBirthdate";
-            this.dateTimeBirthdate.Size = new System.Drawing.Size(159, 20);
-            this.dateTimeBirthdate.TabIndex = 10;
-            this.dateTimeBirthdate.Value = new System.DateTime(2017, 10, 8, 0, 0, 0, 0);
+            this.OK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.OK.Location = new System.Drawing.Point(156, 215);
+            this.OK.Name = "OK";
+            this.OK.Size = new System.Drawing.Size(80, 25);
+            this.OK.TabIndex = 1;
+            this.OK.Text = "ОК";
+            this.OK.UseVisualStyleBackColor = true;
             // 
             // ContactForm
             // 

@@ -8,9 +8,9 @@ using DomainModel;
 
 namespace PostgreSQLRepository
 {
-    class RecordContext : DbContext
+    class PostgreSQLContext : DbContext
     {
-        public RecordContext() : base("PostgreSQL")
+        public PostgreSQLContext() : base("PostgreSQL")
         {
 
         }

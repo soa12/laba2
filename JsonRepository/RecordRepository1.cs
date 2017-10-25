@@ -68,11 +68,11 @@ namespace JsonRepository
             return records;
         }
 
-        public DateTime Test()
-        {
-            DateTime d = DateTime.Today;
-            return d;
-        }
+        //public DateTime Test()
+        //{
+        //    DateTime d = DateTime.Today;
+        //    return d;
+        //}
 
         public BindingList<Record> ToBindingList()
         {

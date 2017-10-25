@@ -18,7 +18,7 @@ namespace DomainModel
 
         BindingList<Record> ToBindingList();
 
-        DateTime Test();
+        //DateTime Test();
         IEnumerable<Record> GetRecords(string name);
         IEnumerable<Record> GetRecords(int day);
     }

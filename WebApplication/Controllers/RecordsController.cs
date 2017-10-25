@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-//using DataAccess;
+using DataAccess;
 using DomainModel;
-using JsonRepository;
+
 
 namespace WebApplication.Controllers
 {
@@ -16,19 +16,19 @@ namespace WebApplication.Controllers
     {
         //private RecordContext db = new RecordContext();
 
-        private RecordRepository db = new RecordRepository();
+        private MSSQLRepository db = new MSSQLRepository();
 
         //private JsonRepository. db = new RecordRepository();
 
         // GET: Records
-        public ActionResult Index()//string searchString)
+        public ActionResult Index(string searchString)
         {
-            db.Serializable();
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
 
-            //    return View(db.GetRecords(searchString));
-            //}
+            if (!String.IsNullOrEmpty(searchString))
+            {
+
+                return View(db.GetRecords(searchString));
+            }
             //return View(db.Records.ToList());
             return View(db.GetRecords());
         }
@@ -140,12 +140,12 @@ namespace WebApplication.Controllers
         }
 
 
-        public ActionResult Test()
-        {
-            ViewBag.Head = db.Test();
-            //var days = db.Test();
-            return View();
-        }
+        //public ActionResult Test()
+        //{
+        //    ViewBag.Head = db.Test();
+        //    //var days = db.Test();
+        //    return View();
+        //}
 
 
         protected override void Dispose(bool disposing)

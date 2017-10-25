@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WFApp
 {
-    public partial class Report : Form
+    public partial class ReportForm : Form
     {
-        public Report()
+        public ReportForm()
         {
             InitializeComponent();
         }

@@ -9,10 +9,10 @@ using System.ComponentModel;
 
 namespace PostgreSQLRepository
 {
-    public class RecordRepository : IPhoneBookRepository
+    public class PostgreSQLRepository : IPhoneBookRepository
     {
 
-        RecordContext context = new RecordContext();
+        PostgreSQLContext context = new PostgreSQLContext();
 
         public void Create(Record r)
         {
@@ -54,8 +54,6 @@ namespace PostgreSQLRepository
             var record = from r in context.Records
                          where r.Name.Contains(name)
                          select r;
-
-
             return record;
         }
 
@@ -72,11 +70,11 @@ namespace PostgreSQLRepository
             return record;
         }
 
-        public DateTime Test()
-        {
-            var dayPlus = DateTime.Today.AddDays(DateTime.Today.AddMonths(1).Day);
-            return dayPlus;
-        }
+        //public DateTime Test()
+        //{
+        //    var dayPlus = DateTime.Today.AddDays(DateTime.Today.AddMonths(1).Day);
+        //    return dayPlus;
+        //}
 
         public BindingList<Record> ToBindingList()
         {

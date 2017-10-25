@@ -17,12 +17,12 @@ using DataAccess;
 
 namespace WFApp
 {
-    public partial class Form1 : Form
+    public partial class PhoneBookForm : Form
     {
         private IPhoneBookRepository db;
-        //private RecordRepository db = new RecordRepository();
+       
 
-        public Form1()
+        public PhoneBookForm()
         {
             InitializeComponent();
             MessageBox.Show("Выберите репозиторий");
@@ -31,7 +31,19 @@ namespace WFApp
             if (openFileDialog1.ShowDialog() == DialogResult.OK) //если в окне была нжата кнопка "ОК"
             {
                 string path = openFileDialog1.FileName;
-                db = ModuleLoader.ReturnObject(path);
+                var asm = Assembly.LoadFile(path);
+                //MessageBox.Show(path);
+                //Пример поиска типа данных, реализующего интерфейс репозитория:
+                var results = from type in asm.GetTypes()
+                              where typeof(IPhoneBookRepository).IsAssignableFrom(type)
+                              select type;
+
+                //Пример создания объекта найденного типа данных:
+
+                //IPhoneBookRepository instance =
+                //    (IPhoneBookRepository)Activator.CreateInstance(results.FirstOrDefault());
+
+                db = (IPhoneBookRepository)Activator.CreateInstance(results.FirstOrDefault());
                 dataGridView1.DataSource = db.ToBindingList();
             }
             
@@ -50,6 +62,7 @@ namespace WFApp
 
         private void Delete_Click(object sender, EventArgs e)
         {
+
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 int index = dataGridView1.SelectedRows[0].Index;
@@ -57,13 +70,7 @@ namespace WFApp
                 bool converted = Int32.TryParse(dataGridView1[0, index].Value.ToString(), out id);
                 if (converted == false)
                     return;
-
-                //Record record = db.Read(id);
                 db.Delete(id);
-
-                //Player player = db.Players.Find(id);
-                //db.Players.Remove(player);
-                //db.SaveChanges();
                 dataGridView1.Refresh();
                 MessageBox.Show("Контакт удален");
             }
@@ -89,8 +96,6 @@ namespace WFApp
 
         private void Close_Click(object sender, EventArgs e)
         {
-            //DialogResult result = ShowDialog(this);
-            //if (result == DialogResult.OK)
             Close();
 
         }
@@ -131,28 +136,28 @@ namespace WFApp
 
         }
 
-        private void buttonReport_Click(object sender, EventArgs e)
+        private void Report_Click(object sender, EventArgs e)
         {
             int day = 5;
-            Report reportForm = new Report();
+            ReportForm reportForm = new ReportForm();
             reportForm.dataGridView1.DataSource = db.GetRecords(day).ToList();
             DialogResult result = reportForm.ShowDialog(this);
-
-            //if (result == DialogResult.Cancel)
-            //    return;
-            //List<Record> list = new List<Record>();
-            
-            //list = db.GetRecords(day).ToList();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void OpenButton_Click(object sender, EventArgs e)
         {
             openFileDialog1 = new OpenFileDialog(); //создание диалогового окна для выбора файла
             openFileDialog1.Filter = "Dynamic Link Library (*.dll)|*.txt|All files(*.*)|*.*"; //формат загружаемого файла
             if (openFileDialog1.ShowDialog() == DialogResult.OK) //если в окне была нжата кнопка "ОК"
             {
                 string path = openFileDialog1.FileName;
-                db = ModuleLoader.ReturnObject(path);
+                var asm = Assembly.LoadFile(path);
+                var results = from type in asm.GetTypes()
+                              where typeof(IPhoneBookRepository).IsAssignableFrom(type)
+                              select type;
+                IPhoneBookRepository instance =
+                    (IPhoneBookRepository)Activator.CreateInstance(results.FirstOrDefault());
+                db = instance;
                 dataGridView1.DataSource = db.ToBindingList();
 
             }

@@ -93,26 +93,25 @@
     <Compile Include="ContactForm.Designer.cs">
       <DependentUpon>ContactForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="PhoneBookForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="PhoneBookForm.Designer.cs">
+      <DependentUpon>PhoneBookForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModuleLoader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Report.cs">
+    <Compile Include="ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Report.Designer.cs">
-      <DependentUpon>Report.cs</DependentUpon>
+    <Compile Include="ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ContactForm.resx">
       <DependentUpon>ContactForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="PhoneBookForm.resx">
+      <DependentUpon>PhoneBookForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -123,9 +122,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Report.resx">
-      <DependentUpon>Report.cs</DependentUpon>
+    <EmbeddedResource Include="ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -148,10 +149,6 @@
     <ProjectReference Include="..\DomainModel\DomainModel.csproj">
       <Project>{141bf15f-9183-4d78-b6b5-f3524325d2ad}</Project>
       <Name>DomainModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\JsonRepository\JsonRepository.csproj">
-      <Project>{e06a8911-5f9b-4174-920c-d232758804c5}</Project>
-      <Name>JsonRepository</Name>
     </ProjectReference>
     <ProjectReference Include="..\PostgreSQLRepository\PostgreSQLRepository.csproj">
       <Project>{3a13e5bd-7b12-4ae4-bdb2-895cf3ab1821}</Project>
