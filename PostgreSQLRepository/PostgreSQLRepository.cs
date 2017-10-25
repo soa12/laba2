@@ -60,14 +60,14 @@ namespace PostgreSQLRepository
         public IEnumerable<Record> GetRecords(int day)
         {
             var day1 = DateTime.Today.AddDays(day).Day;
+            var records = GetRecords().ToList();
 
-            var record = from r in context.Records
-                         where
-                    (r.Birthday.Month == DateTime.Today.Month && r.Birthday.Day >= DateTime.Today.Day &&
-                    r.Birthday.Day <= day1)
-                         select r;
-
-            return record;
+            var bdate = from r in records
+                        where
+                   (r.Birthday.Month == DateTime.Today.Month && r.Birthday.Day >= DateTime.Today.Day &&
+                   r.Birthday.Day <= day1)
+                        select r;
+            return bdate;
         }
 
         //public DateTime Test()
