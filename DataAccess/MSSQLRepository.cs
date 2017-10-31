@@ -12,8 +12,13 @@ namespace DataAccess
 {
     public class MSSQLRepository : IPhoneBookRepository
     {
-        MSSQLContext context = new MSSQLContext();
+        private MSSQLContext context;// = new MSSQLContext();
+        
+        public MSSQLRepository(string connectionString = "SQLServer")
+        {
+            context = new MSSQLContext(connectionString);
 
+        }
         public void Create(Record r)
         {
             context.Records.Add(r);

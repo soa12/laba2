@@ -10,7 +10,7 @@ namespace PostgreSQLRepository
 {
     class PostgreSQLContext : DbContext
     {
-        public PostgreSQLContext() : base("PostgreSQL")
+        public PostgreSQLContext(string connectionString) : base(connectionString)
         {
 
         }

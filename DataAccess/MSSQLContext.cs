@@ -9,7 +9,7 @@ namespace DataAccess
 {
     class MSSQLContext : DbContext
     {
-        public MSSQLContext() : base("SQLServer")
+        public MSSQLContext(string connectionString) : base(connectionString)
         {
             
         }

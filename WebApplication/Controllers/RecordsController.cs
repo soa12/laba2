@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DataAccess;
+using PostgreSQLRepository;
 using DomainModel;
 
 
@@ -16,9 +16,20 @@ namespace WebApplication.Controllers
     {
         //private RecordContext db = new RecordContext();
 
-        private MSSQLRepository db = new MSSQLRepository();
-
+        //private MSSQLRepository db = new MSSQLRepository();
+        //private PostgreSQLRepository.PostgreSQLRepository db = new PostgreSQLRepository.PostgreSQLRepository();
         //private JsonRepository. db = new RecordRepository();
+
+        private IPhoneBookRepository db = null;
+
+        public RecordsController(IPhoneBookRepository rp)
+        {
+            this.db = rp;
+        }
+
+        public RecordsController()
+        { }
+
 
         // GET: Records
         public ActionResult Index(string searchString)

@@ -12,7 +12,12 @@ namespace PostgreSQLRepository
     public class PostgreSQLRepository : IPhoneBookRepository
     {
 
-        PostgreSQLContext context = new PostgreSQLContext();
+        private PostgreSQLContext context;// = new PostgreSQLContext();
+
+        public PostgreSQLRepository(string connectionString = "PostgreSQL")
+        {
+            context = new PostgreSQLContext(connectionString);
+        }
 
         public void Create(Record r)
         {
